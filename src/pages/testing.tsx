@@ -1,6 +1,10 @@
+import Headbar from "@/components/Headbar";
 
 export default function Testing() {
     return (
-        <div>Bye</div>
+        <div>
+            <Headbar />
+            Bye
+        </div>
     );
 }

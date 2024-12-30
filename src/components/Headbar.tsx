@@ -22,9 +22,11 @@ import {
 
 export default function Headbar() {
     return (
-        <div className="flex justify-center m-[2%] h-[10vh]">
-            <div style={{ backgroundColor: 'beige' }} className="flex justify-between border-solid border-2 border-black w-full h-full p-[1%] rounded-md shadow-lg items-center">
-                <h1 className="flex text-center float-left text-[calc(1.25vw+0.5vh)]">New Jangout</h1>
+        /*The logo and Name of the App*/
+        <div className="flex justify-center h-[8vh] w-full">
+            <div style={{ backgroundColor: 'beige' }} className="flex justify-between border-solid border-2 border-black w-full h-full p-[1%] shadow-lg items-center">
+                <h1 className="flex text-center float-left text-[calc(1.05vw+1vh)]">New Jangout</h1>
+        {/* The Navigation bar of the header*/}
                 <NavigationMenu>
                     <NavigationMenuList>
                         <NavigationMenuItem>
@@ -40,20 +42,21 @@ export default function Headbar() {
                         </NavigationMenuItem>
                     </NavigationMenuList>
                 </NavigationMenu>
+                {/* The Login button of the header*/}
                 <Dialog>
-                    <DialogTrigger className='m-[0.5%] float-right w-[7%] h-[75%] items-center'>
+                    <DialogTrigger className='m-[0.5%] float-right w-[5.5%] h-[100%] items-center'>
                         <Button variant='secondary' className="w-[95%] h-[95%] text-[calc(1vw+0.5vh)] border-black border-2">Login</Button>
                     </DialogTrigger>
-                    <DialogContent>
+                    <DialogContent className='bg-white pb-[1%] w-[30%]'>
                         <DialogHeader>
                             <DialogTitle>Login</DialogTitle>
                             <DialogDescription>
-                                <Input className='mt-[2%] mb-[3%] border-blackx' />
-                                <Input />
+                                <Input className='mt-[3%] mb-[4%] border-black w-[100%]' placeholder='Username' />
+                                <Input className='border-black w-[100%] mt-[2%]' placeholder='Password' />
                             </DialogDescription>
                         </DialogHeader>
                         <DialogFooter>
-                            <Button type='submit' className="w-[15%] h-[70%] text-[calc(1vw+0.5vh)] border-black border-2">Log in</Button>
+                            <Button type='submit' className="float-right w-[15%] h-[70%] text-[calc(0.5vw+0.75vh)]">Log in</Button>
                         </DialogFooter>
                     </DialogContent>
                 </Dialog>

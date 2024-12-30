@@ -17,17 +17,17 @@ export default function Headbar() {
                 <h1 className="flex text-center float-left text-[calc(1.25vw+0.5vh)]">New Jangout</h1>
                 <NavigationMenu>
                     <NavigationMenuList>
-                        <NavigationMenuItem>
-                            <Link to="/">
-                                <NavigationMenuLink className={`${navigationMenuTriggerStyle()}`}>Home</NavigationMenuLink>
-                            </Link>
-                            <Link to="/testing">
-                                <NavigationMenuLink className={`${navigationMenuTriggerStyle()}`}>Rooms</NavigationMenuLink>
-                            </Link>
-                            <Link to="/">
-                                <NavigationMenuLink className={`${navigationMenuTriggerStyle()}`}>Profile</NavigationMenuLink>
-                            </Link>
-                        </NavigationMenuItem>
+                            <NavigationMenuItem>
+                                <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()}`}>
+                                    <Link to="/">Home</Link>
+                                </NavigationMenuLink>
+                                <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()}`}>
+                                    <Link to="/testing">Rooms</Link>
+                                </NavigationMenuLink>
+                                <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()}`}>
+                                    <Link to="/">Profile</Link>
+                                </NavigationMenuLink>
+                            </NavigationMenuItem>
                     </NavigationMenuList>
                 </NavigationMenu>
                 <Button variant='secondary' className="float-right m-[0.5%] w-[7%] h-[75%] text-[calc(1vw+0.5vh)] border-black border-2">Login</Button>

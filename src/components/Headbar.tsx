@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from "./ui/button";
+import { Input } from "@/components/ui/input"
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -9,6 +10,15 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
 
 export default function Headbar() {
     return (
@@ -17,20 +27,36 @@ export default function Headbar() {
                 <h1 className="flex text-center float-left text-[calc(1.25vw+0.5vh)]">New Jangout</h1>
                 <NavigationMenu>
                     <NavigationMenuList>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()}`}>
-                                    <Link to="/">Home</Link>
-                                </NavigationMenuLink>
-                                <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()}`}>
-                                    <Link to="/testing">Rooms</Link>
-                                </NavigationMenuLink>
-                                <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()}`}>
-                                    <Link to="/">Profile</Link>
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()}`}>
+                                <Link to="/">Home</Link>
+                            </NavigationMenuLink>
+                            <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()}`}>
+                                <Link to="/testing">Rooms</Link>
+                            </NavigationMenuLink>
+                            <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()}`}>
+                                <Link to="/">Profile</Link>
+                            </NavigationMenuLink>
+                        </NavigationMenuItem>
                     </NavigationMenuList>
                 </NavigationMenu>
-                <Button variant='secondary' className="float-right m-[0.5%] w-[7%] h-[75%] text-[calc(1vw+0.5vh)] border-black border-2">Login</Button>
+                <Dialog>
+                    <DialogTrigger className='m-[0.5%] float-right w-[7%] h-[75%] items-center'>
+                        <Button variant='secondary' className="w-[95%] h-[95%] text-[calc(1vw+0.5vh)] border-black border-2">Login</Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                        <DialogHeader>
+                            <DialogTitle>Login</DialogTitle>
+                            <DialogDescription>
+                                <Input className='mt-[2%] mb-[3%] border-blackx' />
+                                <Input />
+                            </DialogDescription>
+                        </DialogHeader>
+                        <DialogFooter>
+                            <Button type='submit' className="w-[15%] h-[70%] text-[calc(1vw+0.5vh)] border-black border-2">Log in</Button>
+                        </DialogFooter>
+                    </DialogContent>
+                </Dialog>
             </div>
         </div>
     );

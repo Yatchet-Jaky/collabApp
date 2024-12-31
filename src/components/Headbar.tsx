@@ -19,8 +19,42 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
+import { useState } from 'react';
 
 export default function Headbar() {
+
+    /* Functions that handle getting the values from the inputs */
+    const [open, setOpen] = useState(false);
+    const [AccountInfo, setAccountInfo] = useState({
+        username: "",
+        password: "",
+    });
+
+    /* Functions that handle getting the values from the inputs */
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {name, value} = e.target;
+        setAccountInfo((prevData) => ({
+            /* ... is a spread operator which basically makes sure that no other properties/elements in an object/array 
+            are changed unless they are explicitly changed*/
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    /* Functions that handle getting the values from the inputs */
+    const handleSubmit = () => {
+        console.log("Account info:", AccountInfo)
+    };
+
+    /* Resets the input values of the inputs when the dialog is closed 
+    onOpenChange returns a boolean value which is why when handleOpenChange is called with onOpenChange, openState is changed automatically*/
+    const handleOpenChange = (openState: boolean) => {
+        if(!open) {
+            setAccountInfo({ username: '', password: '' }); // Reset state
+        }
+        setOpen(openState)
+    }
+
     return (
         /*The logo and Name of the App*/
         <div className="flex justify-center h-[8vh] w-full">
@@ -43,20 +77,22 @@ export default function Headbar() {
                     </NavigationMenuList>
                 </NavigationMenu>
                 {/* The Login button of the header*/}
-                <Dialog>
-                    <DialogTrigger className='m-[0.5%] float-right w-[5.5%] h-[100%] items-center'>
-                        <Button variant='secondary' className="w-[95%] h-[95%] text-[calc(1vw+0.5vh)] border-black border-2">Login</Button>
+                <Dialog open={open} onOpenChange={handleOpenChange}>
+                    {/* Needed to set DialogTrigger asChild because otherwise it would result in a nested <button> error as 
+                    the dialog trigger counts as a button */}
+                    <DialogTrigger asChild className='m-[0.5%] float-right w-[95%] h-[95%] items-center'>
+                        <Button variant='secondary' className="w-[5.5%] h-[100%] text-[calc(1vw+0.5vh)] border-black border-2">Login</Button>
                     </DialogTrigger>
                     <DialogContent className='bg-white pb-[1%] w-[30%]'>
                         <DialogHeader>
                             <DialogTitle>Login</DialogTitle>
                             <DialogDescription>
-                                <Input className='mt-[3%] mb-[4%] border-black w-[100%]' placeholder='Username' />
-                                <Input className='border-black w-[100%] mt-[2%]' placeholder='Password' />
+                                <Input className='mt-[3%] mb-[4%] border-black w-[100%]' name='username' value={AccountInfo.username} onChange={handleChange} placeholder='Username' />
+                                <Input className='border-black w-[100%] mt-[2%]' name='password' value={AccountInfo.password} onChange={handleChange} placeholder='Password' />
                             </DialogDescription>
                         </DialogHeader>
                         <DialogFooter>
-                            <Button type='submit' className="float-right w-[15%] h-[70%] text-[calc(0.5vw+0.75vh)]">Log in</Button>
+                            <Button type='submit' onClick={handleSubmit} className="float-right w-[15%] h-[70%] text-[calc(0.5vw+0.75vh)]">Log in</Button>
                         </DialogFooter>
                     </DialogContent>
                 </Dialog>
